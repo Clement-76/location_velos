@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 5px 14px 0px #adadad;
+    padding: 15px 50px;
+}
+
+header img {
+    height: 50px;
+}
+
+header h1 {
+    font-family: 'roboto light';
+    font-size: 40px;
+    color: #696969;
+    margin: 0 10px;
+}
+
+#map {
+    margin-top: 50px;
+    height: 500px;
+    width: 40%;
+}
