@@ -1,24 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Location de vélo</title>
+
+    <title>Location de vélos</title>
+
     <link rel="stylesheet" href="/public/css/fonts.css">
     <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="icon" type="image/png" href="public/images/cyclo.png">
 </head>
 
 <body>
 
-    <header>
-        <a href="/">
-            <img src="/public/images/cyclo.png" alt="vélo - logo">
-        </a>
-        <h1>Veloc'</h1>
-    </header>
+    <div id="content">
+        <header>
+            <div class="center">
+                <a href="/">
+                    <img src="/public/images/cyclo.png" alt="vélo - logo">
+                </a>
+                <p>Veloc'</p>
+            </div>
+        </header>
 
-    <div id="map"></div>
+        <div class="container transparent">
+            <div class="center">
+                <h1 class="text">Bienvenue sur le site de Veloc'</h1>
+                <p class="text subtitle">L'agence de location de vélos ouverte 24h/24 et 7j/7</p>
+                <a class="btn" href="#booking">Réserver maintenant</a>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="slider center">
+                <div class="image_container">
+                    <div class="image_slider"></div>
+                    <div class="image_slider"></div>
+                    <div class="image_slider"></div>
+                    <div class="image_slider"></div>
+                    <div class="image_slider"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container transparent">
+            <p class="text center">Louez facilement votre vélo grâce à notre carte intéractive</p>
+        </div>
+
+        <section id="booking" class="container">
+            <div class="center">
+                <div id="map"></div>
+                <div>
+                    <h2>Réservation</h2>
+
+                    <p>Adresse : <span id="address"></span></p>
+                    <div class="informations">
+                        <p>
+                            <span id="nb_places"></span> Places <br>
+                            <span id="bicycles_available"></span> vélos disponibles
+                        </p>
+                        <form>
+                            <div>
+                                <label for="name">Nom : </label>
+                                <input type="text" name="name" id="name" placeholder="Lefebvre">
+                            </div>
+                            <div>
+                                <label for="first_name">Prénom : </label>
+                                <input type="text" name="first_name" id="first_name" placeholder="Cédric">
+                            </div>
+                            <input type="submit" id="book" value="Réserver">
+                        </form>
+                        <p id="booking_state"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container transparent">
+            <div class="center">
+                <p class="text">Vous souhaitez nous contacter ?</p>
+                <p class="subtitle">Notre service téléphonique est accessible de 9h à 19h au <span class="phone">01.02.03.04.05</span></p>
+            </div>
+        </div>
+
+        <footer>
+            <div class="center">
+                <nav>
+                    <ul>
+                        <li><a href="">Conditions générales d'utilisation</a><span>|</span></li>
+                        <li><a href="">Politique de confidentialité</a><span>|</span></li>
+                        <li><a href="">Mentions légales</a></li>
+                    </ul>
+                </nav>
+                <p>Copyright © 2018 Tous droits réservés</p>
+            </div>
+        </footer>
+    </div>
+
 
     <script src="/public/js/ajax.js"></script>
     <script src="/public/js/script.js"></script>
