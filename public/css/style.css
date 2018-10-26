@@ -30,13 +30,13 @@ header img {
 header p {
     font-family: 'roboto light', sans-serif;
     font-size: 40px;
-    color: #7c7c7c;
+    color: #505050;
     margin: 0 10px;
 }
 
 /* slider */
 .slider {
-    height: 400px;
+/*    height: 400px;*/
     overflow: hidden;
 }
 
@@ -77,21 +77,41 @@ header p {
 }
 
 /* booking section */
-#booking .center {
+#booking div.center {
     display: flex;
+    flex-wrap: wrap;
+}
+
+#booking h2 {
+    font: 2.8em 'roboto medium', sans-serif;
+    margin: 0 auto 50px auto;
+    text-align: center;
+    color: #505050;
 }
 
 #map {
     height: 500px;
     box-shadow: 0 0 16px #acacac;
-    flex: 1 1 250px;
-/*    min-width: 150px;*/
+    flex: 1 1 380px;
 }
 
-#map ~ div {
-    flex: 1 1 250px;
-/*    min-width: 150px;*/
+#map + div {
+    flex: 1 1 380px;
+    color: #505050;
+    font-family: 'roboto';
 }
+
+#booking label,
+ {
+    font-weight: 500;
+    letter-spacing: -0.4px;
+}
+
+#booking label {
+    display: inline-block;
+    width: 65px;
+}
+
 
 /* class definition */
 .container {
@@ -106,7 +126,7 @@ header p {
 
 .center {
     margin: auto;
-    width: 80%;
+/*    width: 80%;*/
     max-width: 1024px;
 }
 
@@ -146,6 +166,10 @@ header p {
     left: 0;
 }
 
+.nowrap {
+    white-space: nowrap;
+}
+
 h1.text {
     font-weight: 500;
 }
@@ -162,15 +186,25 @@ footer {
 footer .center {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+footer nav {
+    padding-right: 15px;
 }
 
 footer ul {
     display: flex;
+    flex-wrap: wrap;
     padding-left: 0;
 }
 
 footer li {
     list-style: none;
+    margin: 5px auto;
+/*    flex: 1 1 100%;*/
+    text-align: center;
 }
 
 footer span {
@@ -182,6 +216,7 @@ footer a {
     color: #505050;
     position: relative;
     transition-duration: 0.5s;
+    white-space: nowrap;
 }
 
 footer a:after {
@@ -201,4 +236,79 @@ footer a:hover {
 
 footer a:hover:after {
     transform: scaleX(1);
+}
+
+/* breakpoint for footer */
+@media (max-width: 954px) {
+    footer nav {
+        margin: auto;
+    }
+    
+    footer ul {
+        margin-bottom: 0;
+    }
+    
+    footer p {
+        margin: 10px auto;
+        text-align: center;
+    }
+}
+
+/* tablets */
+@media (max-width: 768px) {
+    .container,
+    footer {
+        padding: 30px;
+    }
+    
+    #booking h2 {
+        margin: 0 auto 30px auto;
+    }
+    
+    .image_slider {
+        height: 38vw;
+    }
+    
+    #map {
+        height: 450px;
+    }
+    
+    footer nav {
+        padding-left: 15px;
+    }
+}
+
+/* breakpoint for footer */
+@media (max-width: 689px) {
+    footer span {
+        visibility: hidden;
+    }
+    
+    footer li {
+        flex: 1 1 100%;
+    }
+}
+
+/* smartphones */
+@media (max-width: 425px) {
+    .container,
+    footer {
+        padding: 20px;
+    }
+    
+    footer nav {
+        padding: 0;
+    }
+    
+    #booking h2 {
+        margin: 0 auto 20px auto;
+    }
+    
+    .image_slider {
+        height: 200px;
+    }
+    
+    #map {
+        height: 400px;
+    }
 }
