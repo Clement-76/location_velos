@@ -52,12 +52,12 @@
             <h2 class="center">Réservation</h2>
             <div class="center">
                 <div id="map"></div>
-                <div>
-                    <p>Adresse : <span id="address"></span></p>
+                <div class="booking_form">
+                    <p>Adresse : <span id="address">37 rue des chameaux 18000 Bourges</span></p>
                     <div class="informations">
                         <p>
-                            <span id="nb_places"></span> Places <br>
-                            <span id="bicycles_available"></span> vélos disponibles
+                            <span id="nb_places">22</span> Places <br>
+                            <span id="bicycles_available">8</span> vélos disponibles
                         </p>
                         <form>
                             <div>
@@ -68,12 +68,12 @@
                                 <label for="first_name">Prénom : </label>
                                 <input type="text" name="first_name" id="first_name" required placeholder="Cédric">
                             </div>
-                            <input type="submit" id="book" value="Réserver">
+                            <input type="submit" id="book" class="btn" value="Réserver">
                         </form>
-                        <p id="booking_state"></p>
                     </div>
                 </div>
             </div>
+            <p id="booking_state" class="center"></p>
         </section>
 
         <div class="container transparent">
