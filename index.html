@@ -7,8 +7,9 @@
 
     <title>Location de vélos</title>
 
-    <link rel="stylesheet" href="/public/css/fonts.css">
-    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="public/css/fonts.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link rel="stylesheet" href="public/css/style.css">
     <link rel="icon" type="image/png" href="public/images/cyclo.png">
 </head>
 
@@ -53,12 +54,36 @@
             <div class="center">
                 <div id="map"></div>
                 <div class="booking_form">
-                    <p>Adresse : <span id="address">37 rue des chameaux 18000 Bourges</span></p>
-                    <div class="informations">
-                        <p>
-                            <span id="nb_places">22</span> Places <br>
-                            <span id="bicycles_available">8</span> vélos disponibles
-                        </p>
+                    <div id="step_one">
+                        <table>
+                            <caption>Station selectionnée</caption>
+                            <tr>
+                                <td>Etat</td>
+                                <td id="state_station"></td>
+                            </tr>
+                            <tr>
+                                <td>Nom</td>
+                                <td id="name_station"></td>
+                            </tr>
+                            <tr>
+                                <td>Adresse</td>
+                                <td id="address_station"></td>
+                            </tr>
+                            <tr>
+                                <td>Vélos disponibles</td>
+                                <td id="available_bikes"></td>
+                            </tr>
+                            <tr>
+                                <td>Places disponibles</td>
+                                <td id="available_bike_stands"></td>
+                            </tr>
+                        </table>
+                        <button id="book" class="btn">Réserver <i class="fas fa-arrow-right"></i></button>
+                    </div>
+
+                    <div id="step_two">
+                        <h3><i class="fas fa-arrow-left"></i> Votre réservation</h3>
+                        <p><span>Adresse : </span><span id="address">37 rue des chameaux 18000 Bourges</span></p>
                         <form>
                             <div>
                                 <label for="name">Nom : </label>
@@ -68,12 +93,14 @@
                                 <label for="first_name">Prénom : </label>
                                 <input type="text" name="first_name" id="first_name" required placeholder="Cédric">
                             </div>
-                            <input type="submit" id="book" class="btn" value="Réserver">
+                            <canvas></canvas>
+                            <button id="reset" class="btn">Effacer</button>
+                            <input type="submit" id="confirm" class="btn" value="Confirmer">
                         </form>
                     </div>
                 </div>
+                <p id="booking_state" class="center"></p>
             </div>
-            <p id="booking_state" class="center"></p>
         </section>
 
         <div class="container transparent">

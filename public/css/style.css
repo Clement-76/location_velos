@@ -93,12 +93,12 @@ header p {
 #map {
     height: 500px;
     box-shadow: 0 0 10px #acacac;
-    flex: 0.3 1 380px;
+    flex: 0.3 1 500px;
     margin-bottom: 15px;
 }
 
 .booking_form {
-    flex: 0.3 1 380px;
+    flex: 0.3 1 350px;
     color: #505050;
     font-family: 'roboto';
     font-size: 1.1em;
@@ -110,10 +110,28 @@ header p {
     margin-bottom: 15px;
 }
 
+.booking_form h3 {
+    margin-top: 0;
+    text-align: center;
+    position: relative;
+    font-size: 1.4em;
+}
+
+.booking_form h3 i {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.booking_form p span:first-child {
+    font-weight: 500;
+}
+
 .booking_form .btn {
     font-size: 1.1em;
     border: 0;
-    width: 100%;
     margin-top: 20px;
     cursor: pointer
 }
@@ -142,6 +160,61 @@ header p {
 #booking_state {
     font-family: 'roboto', sans-serif;
     font-size: 1.1em;
+    flex: 0 0 100%;
+}
+
+#book {
+    position: relative;
+    width: 100%;
+}
+
+.booking_form table {
+    display: block;
+}
+
+.booking_form caption {
+    display: block;
+    margin-bottom: 20px;
+    font-family: 'roboto medium', sans-serif;
+    font-size: 1.5em;
+    letter-spacing: -0.3px;
+}
+
+tbody {
+    display: block;
+}
+
+.booking_form tr:nth-child(2n + 1) {
+    background-color: #eee;
+}
+
+.booking_form tr {
+    display: block;
+    padding: 12px;
+    border-right: 1px solid #eee;
+    border-left: 1px solid #eee;
+}
+
+.booking_form tr:hover {
+    background-color: #ddd;
+}
+
+#book i {
+    position: absolute;
+    right: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition-duration: 0.5s;
+}
+
+#book:hover i {
+    right: 15px;
+    opacity: 1;
+}
+
+#step_two {
+    display: none;
 }
 
 /* class definition */
@@ -275,6 +348,16 @@ footer a:hover:after {
 }
 
 /* breakpoint for footer */
+@media (max-width: 966px) {
+    #booking_state {
+        order: -1;
+    }  
+    
+    #map {
+        order: -2;
+    }
+}
+
 @media (max-width: 954px) {
     footer nav {
         margin: auto;
