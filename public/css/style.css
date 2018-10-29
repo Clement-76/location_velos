@@ -1,11 +1,11 @@
-html {
+html, body {
     height: 100%;
+    overflow-x: hidden;
 }
 
 body {
     margin: 0;
     background: url('/public/images/StockSnap_ZAG3KUMDTW.jpg') center / cover no-repeat fixed;
-    height: 100%;
 }
 
 #content {
@@ -36,15 +36,39 @@ header p {
 
 /* slider */
 .slider {
-    /*    height: 400px;*/
     overflow: hidden;
+    position: relative;
+}
+
+.arrow_left,
+.arrow_right {
+    height: 50px;
+    width: 50px;
+    border-color: #fff;
+    border-style: solid;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotateZ(45deg);
+    cursor: pointer;
+}
+
+.arrow_left {
+    border-width: 0 0 3px 3px;
+    border-radius: 0 0 0 3px;
+    left: 30px;
+}
+
+.arrow_right {
+    border-width: 3px 3px 0 0;
+    border-radius: 0 3px 0 0;
+    right: 30px;
 }
 
 .image_container {
     width: 500%;
     transition-duration: 2s;
     position: relative;
-    /*    left: -100%;*/
+/*        left: -100%;*/
 }
 
 .image_slider {
@@ -108,6 +132,7 @@ header p {
     box-sizing: border-box;
     background-color: #fafafa;
     margin-bottom: 15px;
+    overflow-x: hidden;
 }
 
 .booking_form h3 {
@@ -166,10 +191,12 @@ header p {
 #book {
     position: relative;
     width: 100%;
+    visibility: hidden;
 }
 
 .booking_form table {
     display: block;
+    border-spacing: 0;
 }
 
 .booking_form caption {
@@ -189,14 +216,25 @@ tbody {
 }
 
 .booking_form tr {
-    display: block;
-    padding: 12px;
     border-right: 1px solid #eee;
     border-left: 1px solid #eee;
+    font-size: 0.9em;
+    display: block;
+    box-sizing: border-box;
 }
 
 .booking_form tr:hover {
     background-color: #ddd;
+}
+
+.booking_form td:first-child {
+    font-weight: 500;
+    width: 93px;
+    padding-right: 20px;
+}
+
+.booking_form td {
+    padding: 12px;
 }
 
 #book i {
@@ -213,8 +251,17 @@ tbody {
     opacity: 1;
 }
 
+#step_one {
+/*    display: none;*/
+    position: relative;
+    
+}
+
 #step_two {
     display: none;
+    position: relative;
+    transition-duration: 0.5s;
+    right: -120%;
 }
 
 /* class definition */
@@ -424,9 +471,13 @@ footer a:hover:after {
     #booking h2 {
         margin: 0 auto 20px auto;
     }
+    
+    .booking_form {
+        padding: 0;
+    }
 
     .image_slider {
-        height: 200px;
+        height: 180px;
     }
 
     #map {

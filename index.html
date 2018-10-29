@@ -42,6 +42,8 @@
                     <div class="image_slider"></div>
                     <div class="image_slider"></div>
                 </div>
+                <div class="arrow_left"></div>
+                <div class="arrow_right"></div>
             </div>
         </div>
 
@@ -51,8 +53,10 @@
 
         <section id="booking" class="container">
             <h2 class="center">Réservation</h2>
+
             <div class="center">
                 <div id="map"></div>
+
                 <div class="booking_form">
                     <div id="step_one">
                         <table>
@@ -83,7 +87,7 @@
 
                     <div id="step_two">
                         <h3><i class="fas fa-arrow-left"></i> Votre réservation</h3>
-                        <p><span>Adresse : </span><span id="address">37 rue des chameaux 18000 Bourges</span></p>
+                        <p><span>Adresse : </span><span id="address"></span></p>
                         <form>
                             <div>
                                 <label for="name">Nom : </label>
@@ -124,9 +128,10 @@
         </footer>
     </div>
 
-
-    <script src="/public/js/ajax.js"></script>
-    <script src="/public/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="public/js/ajax.js"></script>
+    <script src="public/js/booking.js"></script>
+    <script src="public/js/script.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDx5rn7q5vQkmLkda8eK1g_gYWOO6PHt6U&callback=initMap" type="text/javascript"></script>
 </body>
 
