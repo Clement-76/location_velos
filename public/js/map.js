@@ -35,13 +35,13 @@ get("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=a443018b15d69
                     $("#state_station").text("Station ouverte");
                     $("#book").css("visibility", "visible");
 
-                    $("#book").on("click", bookingForm.nextStep);
-                    $("#step_two h3 i").on("click", bookingForm.previousStep);
+                    $("#book").on("click", booking.nextStep);
+                    $("#step_two h3 i").on("click", booking.previousStep);
                 } else {
                     $("#state_station").text("Station fermée");
                 }
                 
-                bookingForm.setInformations(station);
+                booking.setInformations(station);
             }
         });
 
