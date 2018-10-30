@@ -40,6 +40,31 @@ header p {
     position: relative;
 }
 
+.pause {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80px;
+    width: 80px;
+    background-color: rgba(0, 0, 0, 0.58);
+    border-radius: 50%;
+    display: flex;
+    transition-duration: 1.5s;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.slider:hover .pause {
+    opacity: 1;
+}
+
+.pause i {
+    font-size: 25px;
+    margin: auto;
+    color: #fff;
+}
+
 .arrow_left,
 .arrow_right {
     height: 30px;
@@ -122,13 +147,14 @@ header p {
 }
 
 .booking_form {
+    max-width: 500px;
     flex: 0.3 1 350px;
     color: #505050;
     font-family: 'roboto';
     font-size: 1.1em;
     box-shadow: 0 0 10px #acacac;
     border-radius: 5px;
-    padding: 30px;
+    padding: 20px 30px;
     box-sizing: border-box;
     background-color: #fafafa;
     margin-bottom: 15px;
@@ -136,7 +162,7 @@ header p {
 }
 
 .booking_form h3 {
-    margin-top: 0;
+    margin-top: 10px;
     text-align: center;
     position: relative;
     font-size: 1.4em;
@@ -157,11 +183,12 @@ header p {
 .booking_form .btn {
     font-size: 1.1em;
     border: 0;
-    margin-top: 20px;
+    margin-top: 10px;
     cursor: pointer
 }
 
-.booking_form label {
+.booking_form label,
+.sign {
     font-weight: 500;
     display: block;
     margin-bottom: 8px;
@@ -172,7 +199,7 @@ header p {
     padding: 8px;
     box-sizing: border-box;
     font-size: 0.9em;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 6px;
     outline: none;
@@ -252,9 +279,7 @@ tbody {
 }
 
 #step_one {
-/*    display: none;*/
     position: relative;
-    
 }
 
 #step_two {
@@ -262,6 +287,14 @@ tbody {
     position: relative;
     transition-duration: 0.5s;
     right: -120%;
+}
+
+.booking_form canvas {
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 120px;
+    box-sizing: border-box;
+    background-color: #fff;
 }
 
 /* class definition */
@@ -395,7 +428,7 @@ footer a:hover:after {
 }
 
 /* breakpoint for footer */
-@media (max-width: 966px) {
+@media all and (max-width: 966px) {
     #booking_state {
         order: -1;
     }  
@@ -405,7 +438,7 @@ footer a:hover:after {
     }
 }
 
-@media (max-width: 954px) {
+@media all and (max-width: 954px) {
     footer nav {
         margin: auto;
     }
@@ -421,8 +454,7 @@ footer a:hover:after {
 }
 
 /* tablets */
-@media (max-width: 768px) {
-
+@media all and (max-width: 768px) {
     .container,
     footer {
         padding: 30px;
@@ -446,7 +478,7 @@ footer a:hover:after {
 }
 
 /* breakpoint for footer */
-@media (max-width: 689px) {
+@media all and (max-width: 689px) {
     footer span {
         visibility: hidden;
     }
@@ -457,8 +489,7 @@ footer a:hover:after {
 }
 
 /* smartphones */
-@media (max-width: 425px) {
-
+@media all and (max-width: 425px) {
     .container,
     footer,
     .booking_form {
@@ -507,5 +538,23 @@ footer a:hover:after {
 
     #map {
         height: 400px;
+    }
+}
+
+@media all and (min-width: 1500px) {
+    .center {
+        max-width: 70vw;
+    }
+    
+    #booking div.center {
+        justify-content: center;
+    }
+    
+    .booking_form {
+        margin-left: 50px;
+    }
+    
+    #book {
+        margin-top: 30px;
     }
 }
