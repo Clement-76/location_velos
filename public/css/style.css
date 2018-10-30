@@ -50,7 +50,7 @@ header p {
     background-color: rgba(0, 0, 0, 0.58);
     border-radius: 50%;
     display: flex;
-    transition-duration: 1.5s;
+    transition-duration: 0.5s;
     opacity: 0;
     cursor: pointer;
 }
@@ -218,7 +218,7 @@ header p {
 #book {
     position: relative;
     width: 100%;
-    visibility: hidden;
+    display: none;
 }
 
 .booking_form table {
@@ -291,10 +291,9 @@ tbody {
 
 .booking_form canvas {
     border: 1px solid #ccc;
-    width: 100%;
-    height: 120px;
     box-sizing: border-box;
     background-color: #fff;
+    display: block;
 }
 
 /* class definition */
