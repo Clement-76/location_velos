@@ -1,62 +1,65 @@
-//var canvas = {
-//    
-//}
+var canvas = {
+    init: function () {
+        this.canvas = $("#canvas");
+        this.ctx = this.canvas[0].getContext("2d");
+        this.posX;
+        this.posY;
+        this.initCanvas();
+    },
 
-var canvas = $("#canvas");
-var ctx = canvas[0].getContext("2d");
-var formWidth = $(".booking_form").width();
-var posX;
-var posY;
+    initCanvas: function () {
+        canvas.sizeOfCanvas();
+        $("#reset").on("click", this.clearCanvas);
+        $("#canvas").on("mousedown touchstart", this.mouseDown);
+        $("#canvas").on("mouseup touchend mouseleave", this.mouseUp);
+        $(window).on("resize", this.sizeOfCanvas);
+    },
 
-canvas[0].width = formWidth - 2;
+    mouseUp: function () {
+        //stop mousemove event
+        $("#canvas").off("mousemove touchmove", canvas.mouseMove);
+    },
 
-$(window).on("resize", function () {
-    formWidth = $(".booking_form").width();
-    canvas[0].width = formWidth - 2;
-    initCtxCanvas();
-})
+    mouseDown: function (event) {
+        event.preventDefault();
+        canvas.ctx.beginPath();
+        $("#canvas").on("mousemove touchmove", canvas.mouseMove);
+    },
 
-function initCtxCanvas() {
-    //lines styles
-    ctx.lineJoin = 'round';
-    ctx.lineCap = 'round';
-    ctx.lineWidth = 3;
-}
+    mouseMove: function (event) {
+        if (event.type === "touchmove") {
+            this.posX = event.originalEvent.touches[0].pageX;
+            this.posY = event.originalEvent.touches[0].pageY;
+        } else {
+            this.posX = event.pageX;
+            this.posY = event.pageY;
+        }
 
-function mouseUp() {
-    //stop mousemove event
-    canvas.off("mousemove touchmove", mouseMove)
-}
+        var offsetLeftCanvas = $("#canvas").offset().left;
+        var offsetTopCanvas = $("#canvas").offset().top;
 
-function mouseMove(event) {
-    if (event.type === "touchmove") {
-        posX = event.originalEvent.touches[0].pageX;
-        posY = event.originalEvent.touches[0].pageY;
-    } else {
-        posX = event.pageX;
-        posY = event.pageY;
+        var canvasX = this.posX - offsetLeftCanvas;
+        var canvasY = this.posY - offsetTopCanvas;
+
+        canvas.ctx.lineTo(canvasX, canvasY);
+        canvas.ctx.stroke();
+    },
+
+    clearCanvas: function () {
+        canvas.ctx.clearRect(0, 0, $("#canvas").width(), $("#canvas").height());
+    },
+
+    sizeOfCanvas: function () {
+        canvas.formWidth = $(".booking_form").width();
+
+        //the - 2 is for canvas borders
+        $("#canvas")[0].width = canvas.formWidth - 2;
+
+        //line styles
+        canvas.ctx.lineJoin = 'round';
+        canvas.ctx.lineCap = 'round';
+        canvas.ctx.lineWidth = 3;
     }
-
-    var offsetLeftCanvas = canvas.offset().left;
-    var offsetTopCanvas = canvas.offset().top;
-
-    var canvasX = posX - offsetLeftCanvas;
-    var canvasY = posY - offsetTopCanvas;
-
-    ctx.lineTo(canvasX, canvasY);
-    ctx.stroke();
 }
 
-$(canvas).on("mousedown touchstart", function (event) {
-    event.preventDefault();
-    ctx.beginPath();
-    canvas.on("mousemove touchmove", mouseMove);
-})
-
-canvas.on("mouseup touchend mouseleave", mouseUp);
-
-initCtxCanvas();
-
-$("#reset").on("click", function (event) {
-    ctx.clearRect(0, 0, canvas[0].width, canvas[0].height);
-})
+canvas.init();
