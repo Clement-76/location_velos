@@ -4,6 +4,7 @@ var canvas = {
         this.ctx = this.canvas[0].getContext("2d");
         this.posX;
         this.posY;
+        this.isEmpty = true;
         this.initCanvas();
     },
 
@@ -43,13 +44,19 @@ var canvas = {
 
         canvas.ctx.lineTo(canvasX, canvasY);
         canvas.ctx.stroke();
+        
+        canvas.isEmpty = false;
     },
 
     clearCanvas: function () {
         canvas.ctx.clearRect(0, 0, $("#canvas").width(), $("#canvas").height());
+        canvas.isEmpty = true;
     },
 
     sizeOfCanvas: function () {
+        //because resize canvas clears it
+        canvas.isEmpty = true;
+        
         canvas.formWidth = $(".booking_form").width();
 
         //the - 2 is for canvas borders
