@@ -1,15 +1,13 @@
-var canvas = {
-
-}
+//var canvas = {
+//    
+//}
 
 var canvas = $("#canvas");
 var ctx = canvas[0].getContext("2d");
-var firstPosX;
-var firstPosY;
-var firstCanvasX;
-var firstCanvasY;
-
 var formWidth = $(".booking_form").width();
+var posX;
+var posY;
+
 canvas[0].width = formWidth - 2;
 
 $(window).on("resize", function () {
@@ -25,10 +23,7 @@ function initCtxCanvas() {
     ctx.lineWidth = 3;
 }
 
-
 function mouseUp() {
-    //delete old mouseup event
-    canvas.off("mouseup touchend mouseleave", mouseUp);
     //stop mousemove event
     canvas.off("mousemove touchmove", mouseMove)
 }
@@ -41,40 +36,24 @@ function mouseMove(event) {
         posX = event.pageX;
         posY = event.pageY;
     }
-    
+
     var offsetLeftCanvas = canvas.offset().left;
     var offsetTopCanvas = canvas.offset().top;
 
-    var secondCanvasX = posX - offsetLeftCanvas;
-    var secondCanvasY = posY - offsetTopCanvas;
+    var canvasX = posX - offsetLeftCanvas;
+    var canvasY = posY - offsetTopCanvas;
 
-    ctx.lineTo(firstCanvasX, firstCanvasY);
-    ctx.lineTo(secondCanvasX, secondCanvasY);
+    ctx.lineTo(canvasX, canvasY);
     ctx.stroke();
-
-    firstCanvasX = secondCanvasX;
-    firstCanvasY = secondCanvasY;
 }
 
 $(canvas).on("mousedown touchstart", function (event) {
-    if (event.type === "touchstart") {
-        firstPosX = event.originalEvent.touches[0].pageX;
-        firstPosY = event.originalEvent.touches[0].pageY;
-    } else {
-        firstPosX = event.pageX;
-        firstPosY = event.pageY;
-    }
-
-    firstCanvasX = firstPosX - canvas.offset().left;
-    firstCanvasY = firstPosY - canvas.offset().top;
-    
-    console.log(firstCanvasX);
-
+    event.preventDefault();
     ctx.beginPath();
-
     canvas.on("mousemove touchmove", mouseMove);
-    canvas.on("mouseup touchend mouseleave", mouseUp);
 })
+
+canvas.on("mouseup touchend mouseleave", mouseUp);
 
 initCtxCanvas();
 
