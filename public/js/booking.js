@@ -69,6 +69,8 @@ var booking = {
     },
 
     setInformations: function (station) {
+        $(".booking_form").show("slow");
+        
         if (this.actualStep === 2) {
             this.previousStep();
         }
