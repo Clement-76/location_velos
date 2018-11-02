@@ -557,6 +557,11 @@ footer a:hover:after {
     #map {
         height: 400px;
     }
+    
+    #booking_state {
+        margin: 5px auto 0 auto;
+        flex: 0 0 100%;
+    }
 }
 
 @media all and (min-width: 1500px) {
