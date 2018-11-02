@@ -4,6 +4,7 @@ var slideshow = {
         this.actualSlide = 0;
         this.actualControl = "pause";
         this.autoSlide = setInterval(this.nextSlide, 6000);
+
         $(".controls").on("click", slideshow.controls);
         $(".arrow_left").on("click", slideshow.previousSlide);
         $(".arrow_right").on("click", slideshow.nextSlide);
@@ -14,6 +15,7 @@ var slideshow = {
         //to not have multiple animations at the same time
         if (slideshow.animate === false) {
             slideshow.animate = true;
+
             slideshow.actualSlide++;
 
             var leftPercentage = -slideshow.actualSlide * 100;
@@ -27,14 +29,34 @@ var slideshow = {
                     $(".image_container").css("left", "0");
                     slideshow.actualSlide = 0;
                 }
+
+                //end of the animation
                 slideshow.animate = false;
             });
         }
-
     },
 
     previousSlide: function () {
+        if (slideshow.animate === false) {
+            slideshow.animate = true;
 
+            //if the current image is the first one, we go to the last one for the transition
+            if (slideshow.actualSlide === 0) {
+                $(".image_container").css("left", "-400%");
+                slideshow.actualSlide = 4;
+            }
+
+            slideshow.actualSlide--;
+
+            var leftPercentage = -slideshow.actualSlide * 100;
+
+            $(".image_container").animate({
+                left: leftPercentage + "%"
+            }, 1000, function () {
+                //end of the animation
+                slideshow.animate = false;
+            });
+        }
     },
 
     controls: function () {
