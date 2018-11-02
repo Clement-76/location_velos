@@ -213,6 +213,8 @@ header p {
     font-family: 'roboto', sans-serif;
     font-size: 1.1em;
     flex: 0 0 100%;
+    text-align: center;
+    margin: 5px auto 20px auto;
 }
 
 #book {
