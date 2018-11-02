@@ -40,7 +40,7 @@ header p {
     position: relative;
 }
 
-.pause {
+.controls {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -55,11 +55,11 @@ header p {
     cursor: pointer;
 }
 
-.slider:hover .pause {
+.slider:hover .controls {
     opacity: 1;
 }
 
-.pause i {
+.controls i {
     font-size: 25px;
     margin: auto;
     color: #fff;
@@ -91,7 +91,7 @@ header p {
 
 .image_container {
     width: 500%;
-    transition-duration: 2s;
+/*    transition-duration: 2s;*/
     position: relative;
 /*        left: -100%;*/
 }
@@ -105,23 +105,20 @@ header p {
     background-repeat: no-repeat;
 }
 
-.image_slider:nth-child(1) {
+.image_slider:nth-child(1),
+.image_slider:nth-child(5) {
     background-image: url('/public/images/bicycle-bike-city-1141410.jpg');
 }
 
 .image_slider:nth-child(2) {
-    background-image: url('/public/images/action-adult-bicycles-1119162.jpg');
-}
-
-.image_slider:nth-child(3) {
     background-image: url('/public/images/bicycle-bike-blur-990113.jpg');
 }
 
-.image_slider:nth-child(4) {
+.image_slider:nth-child(3) {
     background-image: url('/public/images/StockSnap_YI3UNIJQ0X.jpg');
 }
 
-.image_slider:nth-child(5) {
+.image_slider:nth-child(4) {
     background-image: url('/public/images/https___www.lifeofpix.com_wp-content_uploads_2014_07_life-of-pix-free-stock-photos-montreal-quebec-bikes-street-pavement.jpg');
 }
 
