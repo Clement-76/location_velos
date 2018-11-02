@@ -9,7 +9,8 @@ var booking = {
 
     showBooking: function () {
         if (sessionStorage.getItem("time")) {
-            $("#booking_state").html("Vélo réservé à la station \"" + sessionStorage.getItem("reservedStation") + "\" par " + localStorage.getItem("firstName") + " " + localStorage.getItem("name") + "<br>Temps restant : <span id='remaining_time'></span>");
+            $("#booking_state").show();
+            $("#booking_state").html("Il y a une réservation : <br><b>Station</b> : " + sessionStorage.getItem("reservedStation") + "<br><b>Par</b> : " + localStorage.getItem("firstName") + " " + localStorage.getItem("name") + "<br><b>Temps restant</b> : <span id='remaining_time'></span>");
             booking.remainingTime();
         }
     },
@@ -36,6 +37,7 @@ var booking = {
                 $("#remaining_time").text(remainingMinutes + "min " + remainingSeconds + "s");
             } else {
                 $("#booking_state").html("");
+                $("#booking_state").hide();
                 sessionStorage.removeItem("time");
                 sessionStorage.removeItem("reservedStation");
                 clearInterval(chrono);

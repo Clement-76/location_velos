@@ -5,7 +5,7 @@ html, body {
 
 body {
     margin: 0;
-    background: url('/public/images/StockSnap_ZAG3KUMDTW.jpg') center / cover no-repeat fixed;
+    background: url('/public/images/bicycle-background.jpg') center / cover no-repeat fixed;
 }
 
 #content {
@@ -91,9 +91,7 @@ header p {
 
 .image_container {
     width: 500%;
-/*    transition-duration: 2s;*/
     position: relative;
-/*        left: -100%;*/
 }
 
 .image_slider {
@@ -107,19 +105,19 @@ header p {
 
 .image_slider:nth-child(1),
 .image_slider:nth-child(5) {
-    background-image: url('/public/images/bicycle-bike-city-1141410.jpg');
+    background-image: url('/public/images/bicycle-1.jpg');
 }
 
 .image_slider:nth-child(2) {
-    background-image: url('/public/images/bicycle-bike-blur-990113.jpg');
+    background-image: url('/public/images/bicycle-2.jpg');
 }
 
 .image_slider:nth-child(3) {
-    background-image: url('/public/images/StockSnap_YI3UNIJQ0X.jpg');
+    background-image: url('/public/images/bicycle-3.jpg');
 }
 
 .image_slider:nth-child(4) {
-    background-image: url('/public/images/https___www.lifeofpix.com_wp-content_uploads_2014_07_life-of-pix-free-stock-photos-montreal-quebec-bikes-street-pavement.jpg');
+    background-image: url('/public/images/bicycle-4.jpg');
 }
 
 /* booking section */
@@ -209,9 +207,15 @@ header p {
 #booking_state {
     font-family: 'roboto', sans-serif;
     font-size: 1.1em;
-    flex: 0 0 100%;
-    text-align: center;
+    flex: 0 0 80%;
+    display: inline-block;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    padding: 15px;
+    box-sizing: border-box;
     margin: 5px auto 20px auto;
+    color: #505050;
+    display: none;
 }
 
 #book {
@@ -451,7 +455,7 @@ footer a:hover:after {
     }
 }
 
-/* tablets */
+/* tablets and smartphones */
 @media all and (max-width: 768px) {
     .container,
     footer {
@@ -464,6 +468,21 @@ footer a:hover:after {
 
     .image_slider {
         height: 38vw;
+    }
+    
+    .controls {
+        opacity: 1;
+        height: 40px;
+        width: 40px;
+        left: 5px;
+        top: inherit;
+        bottom: 5px;
+        transform: translate(0);
+        background-color: rgba(0, 0, 0, 0.42);
+    }
+    
+    .controls i {
+        font-size: 14px;
     }
 
     #map {
@@ -541,11 +560,29 @@ footer a:hover:after {
 
 @media all and (min-width: 1500px) {
     .center {
-        max-width: 70vw;
+        max-width: 65vw;
+    }
+    
+    footer .center {
+        justify-content: center;
+    }
+    
+    footer nav {
+        margin-right: 60px;
     }
     
     #booking div.center {
         justify-content: center;
+    }
+    
+    .image_slider {
+        height: 23vw;
+    }
+    
+    .arrow_left,
+    .arrow-right {
+        height: 60px;
+        width: 60px;
     }
     
     .booking_form {
@@ -554,5 +591,10 @@ footer a:hover:after {
     
     #book {
         margin-top: 30px;
+    }
+    
+    #map {
+        height: 600px;
+        flex: 0.3 1 800px;
     }
 }
