@@ -9,7 +9,6 @@ var canvas = {
     },
 
     initCanvas: function () {
-        canvas.sizeOfCanvas();
         $("#reset").on("click", this.clearCanvas);
         $("#canvas").on("mousedown touchstart", this.mouseDown);
         $("#canvas").on("mouseup touchend mouseleave", this.mouseUp);

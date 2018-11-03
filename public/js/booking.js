@@ -22,17 +22,17 @@ var booking = {
         var chrono = setInterval(function () {
             //Time spent since booking
             var timeSpent = Date.now() - Number(sessionStorage.getItem("time"));
-            
+
             var remainingMs = twentyMinutes - timeSpent;
             var remainingMinutes = Math.floor(remainingMs / 1000 / 60);
-            
+
             // % 60 to substract the minutes to the seconds
             var remainingSeconds = Math.floor((remainingMs / 1000) % 60);
-            
+
             if (String(remainingSeconds).length === 1) {
                 remainingSeconds = "0" + remainingSeconds;
             }
-            
+
             if (timeSpent < twentyMinutes) {
                 $("#remaining_time").text(remainingMinutes + "min " + remainingSeconds + "s");
             } else {
@@ -69,8 +69,10 @@ var booking = {
     },
 
     setInformations: function (station) {
-        $(".booking_form").show("slow");
-        
+        $(".booking_form").show("slow", function () {
+            canvas.sizeOfCanvas();
+        });
+
         if (this.actualStep === 2) {
             this.previousStep();
         }
