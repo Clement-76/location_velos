@@ -559,7 +559,7 @@ footer a:hover:after {
     }
     
     #booking_state {
-        margin: 5px auto 0 auto;
+/*        margin: 5px auto 0 auto;*/
         flex: 0 0 100%;
     }
 }
