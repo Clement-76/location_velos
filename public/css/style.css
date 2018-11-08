@@ -529,6 +529,11 @@ footer a:hover:after {
     .booking_form {
         padding: 20px;
     }
+    
+    header .center {
+        justify-content: center;
+        
+    }
 
     .arrow_left,
     .arrow_right {
