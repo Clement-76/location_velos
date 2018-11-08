@@ -43,11 +43,10 @@ header p {
 
 .controls {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 80px;
-    width: 80px;
+    left: 15px;
+    bottom: 15px;
+    height: 60px;
+    width: 60px;
     background-color: rgba(0, 0, 0, 0.58);
     border-radius: 50%;
     display: flex;
@@ -61,7 +60,7 @@ header p {
 }
 
 .controls i {
-    font-size: 25px;
+    font-size: 1em;
     margin: auto;
     color: #fff;
 }
@@ -102,6 +101,7 @@ header p {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    display: flex;
 }
 
 .image_slider p {
@@ -110,7 +110,7 @@ header p {
     font-size: 1.6em;
     background-color: rgba(0, 0, 0, 0.5);
     width: 80%;
-    margin: 15px auto 0 auto;
+    margin: auto;
     padding: 15px;
     border-radius: 6px;
 }
@@ -482,12 +482,10 @@ footer a:hover:after {
 
     .image_slider {
         height: 38vw;
-        display: flex;
     }
 
     .image_slider p {
         width: 60%;
-        margin: auto;
         font-size: 1.4em;
     }
 
@@ -496,14 +494,11 @@ footer a:hover:after {
         height: 40px;
         width: 40px;
         left: 5px;
-        top: inherit;
         bottom: 5px;
-        transform: translate(0);
-        background-color: rgba(0, 0, 0, 0.42);
     }
 
     .controls i {
-        font-size: 14px;
+        font-size: 0.85em;
     }
 
     #map {
@@ -586,7 +581,6 @@ footer a:hover:after {
     }
 
     #booking_state {
-        /*        margin: 5px auto 0 auto;*/
         flex: 0 0 100%;
     }
 }
