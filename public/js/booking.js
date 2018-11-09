@@ -122,6 +122,9 @@ var booking = {
 
             sessionStorage.setItem("reservedStation", booking.selectedStation.name);
             sessionStorage.setItem("time", Date.now());
+            
+            //redirection 
+            window.location.href = "https://veloc.clementpatigny.ovh/#booking";
         }
     }
 }
