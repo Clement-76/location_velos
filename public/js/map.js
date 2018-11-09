@@ -16,7 +16,7 @@ get("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=a443018b15d69
     stations.forEach(function (station) {
 
         var icon = "";
-        if (station.status === 'OPEN') {
+        if (station.status === 'OPEN' && station.available_bikes > 0) {
             icon = "/public/images/biker_green.png";
         } else {
             icon = "/public/images/biker_red.png";
@@ -31,14 +31,11 @@ get("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=a443018b15d69
                 map.setCenter(station.position);
                 map.setZoom(20);
 
-                if (station.status === 'OPEN') {
-                    $("#state_station").text("Station ouverte");
+                if (station.status === 'OPEN' && station.available_bikes > 0) {
                     $("#book").show();
-
                     $("#book").on("click", booking.nextStep);
                     $("#step_two h3 i").on("click", booking.previousStep);
                 } else {
-                    $("#state_station").text("Station fermée");
                     $("#book").hide();
                 }
                 

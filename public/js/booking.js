@@ -79,6 +79,12 @@ var booking = {
 
         this.selectedStation = station;
 
+        if (station.status === 'OPEN') {
+            $("#state_station").text("Station ouverte");
+        } else {
+            $("#state_station").text("Station fermée");
+        }
+
         $(".name_station").text(station.name);
         $("#address_station").text(station.address);
 

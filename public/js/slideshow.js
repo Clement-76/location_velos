@@ -6,6 +6,7 @@ var slideshow = {
         this.autoSlide = setInterval(this.nextSlide, 6000);
 
         $(".controls").on("click", slideshow.controls);
+        $(document).on("keydown", slideshow.keydown);
         $(".arrow_left").on("click", slideshow.previousSlide);
         $(".arrow_right").on("click", slideshow.nextSlide);
     },
@@ -56,6 +57,14 @@ var slideshow = {
                 //end of the animation
                 slideshow.animate = false;
             });
+        }
+    },
+    
+    keydown: function () {
+        if (event.keyCode === 37) {
+            slideshow.previousSlide();
+        } else if (event.keyCode === 39) {
+            slideshow.nextSlide();
         }
     },
 
