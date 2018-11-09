@@ -97,24 +97,24 @@ var booking = {
         $("#available_bike_stands").text(station.available_bike_stands);
     },
 
-    check: function (boolean, elt) {
+    check: function (e, boolean, elt) {
         if (boolean) {
-            event.preventDefault();
+            e.preventDefault();
             $(elt).css("border", "1px solid #e74c3c");
         } else {
             $(elt).css("border", "1px solid #49e73c");
         }
     },
 
-    book: function () {
+    book: function (e) {
         var emptyRegex = /^[\s]*$/;
         booking.name = $("#name").val();
         booking.firstName = $("#first_name").val();
 
         //checking if form elements are not empty
-        booking.check(canvas.isEmpty, $("#canvas"));
-        booking.check(emptyRegex.test(booking.name), $("#name"));
-        booking.check(emptyRegex.test(booking.firstName), $("#first_name"));
+        booking.check(e, canvas.isEmpty, $("#canvas"));
+        booking.check(e, emptyRegex.test(booking.name), $("#name"));
+        booking.check(e, emptyRegex.test(booking.firstName), $("#first_name"));
 
         if (canvas.isEmpty === false && emptyRegex.test(booking.name) === false && emptyRegex.test(booking.firstName) === false) {
             localStorage.setItem("name", booking.name);

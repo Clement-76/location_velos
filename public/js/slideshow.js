@@ -60,10 +60,10 @@ var slideshow = {
         }
     },
     
-    keydown: function () {
-        if (event.keyCode === 37) {
+    keydown: function (e) {
+        if (e.keyCode === 37) {
             slideshow.previousSlide();
-        } else if (event.keyCode === 39) {
+        } else if (e.keyCode === 39) {
             slideshow.nextSlide();
         }
     },

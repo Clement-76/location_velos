@@ -20,19 +20,19 @@ var canvas = {
         $("#canvas").off("mousemove touchmove", canvas.mouseMove);
     },
 
-    mouseDown: function (event) {
-        event.preventDefault();
+    mouseDown: function (e) {
+        e.preventDefault();
         canvas.ctx.beginPath();
         $("#canvas").on("mousemove touchmove", canvas.mouseMove);
     },
 
-    mouseMove: function (event) {
-        if (event.type === "touchmove") {
-            this.posX = event.originalEvent.touches[0].pageX;
-            this.posY = event.originalEvent.touches[0].pageY;
+    mouseMove: function (e) {
+        if (e.type === "touchmove") {
+            this.posX = e.originalEvent.touches[0].pageX;
+            this.posY = e.originalEvent.touches[0].pageY;
         } else {
-            this.posX = event.pageX;
-            this.posY = event.pageY;
+            this.posX = e.pageX;
+            this.posY = e.pageY;
         }
 
         var offsetLeftCanvas = $("#canvas").offset().left;
