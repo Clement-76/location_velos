@@ -101,18 +101,22 @@ header p {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    display: flex;
+}
+
+.image_slider img {
+    height: calc(100% - 37px);
+    display: block;
+    margin: 0 auto;
 }
 
 .image_slider p {
+    text-align: center;
     color: #fff;
     font-family: 'roboto', sans-serif;
-    font-size: 1.6em;
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 80%;
-    margin: auto;
-    padding: 15px;
-    border-radius: 6px;
+    font-size: 1.4em;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin: 0;
+    padding: 5px 35px;
 }
 
 .image_slider:nth-child(1),
@@ -485,8 +489,11 @@ footer a:hover:after {
     }
 
     .image_slider p {
-        width: 60%;
-        font-size: 1.4em;
+        font-size: 1.2em;
+    }
+    
+    .image_slider img {
+        height: calc(100% - 33px);
     }
 
     .controls {
@@ -534,6 +541,12 @@ footer a:hover:after {
         justify-content: center;
         
     }
+    
+    a.btn {
+        text-transform: uppercase;
+        display: block;
+        text-align: center;
+    }
 
     .arrow_left,
     .arrow_right {
@@ -576,9 +589,11 @@ footer a:hover:after {
     }
 
     .image_slider p {
-        font-size: 1em;
-        padding: 10px;
-        width: 56%;
+        font-size: 0.9em;
+    }
+    
+    .image_slider img {
+        height: calc(100% - 28px);
     }
 
     #map {
