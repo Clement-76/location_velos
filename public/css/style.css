@@ -589,11 +589,12 @@ footer a:hover:after {
     }
 
     .image_slider p {
-        font-size: 0.9em;
+        font-size: 0.85em;
+        padding: 5px;
     }
     
     .image_slider img {
-        height: calc(100% - 28px);
+        height: calc(100% - 26px);
     }
 
     #map {
