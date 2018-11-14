@@ -101,12 +101,15 @@ header p {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
 }
 
 .image_slider img {
     height: calc(100% - 37px);
+    max-height: 450px;
     display: block;
-    margin: 0 auto;
+    margin: auto;
 }
 
 .image_slider p {
