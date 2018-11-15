@@ -106,7 +106,7 @@ header p {
 }
 
 .image_slider img {
-    height: calc(100% - 37px);
+    height: 80%;
     max-height: 450px;
     display: block;
     margin: auto;
