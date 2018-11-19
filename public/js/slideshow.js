@@ -83,7 +83,7 @@ var slideshow = {
     },
 
     play: function () {
-        slideshow.autoSlide = setInterval(this.nextSlide, 5000);
+        slideshow.autoSlide = setInterval(this.nextSlide, 6000);
         $(".controls i").replaceWith("<i class='fas fa-pause'></i>");
         slideshow.actualControl = "pause";
     }
