@@ -1,4 +1,5 @@
 var map;
+var locations = [];
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -14,6 +15,7 @@ function initMap() {
 get("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=a443018b15d69f18cf8c629825d3a24a12bb79f3", function (response) {
     var stations = JSON.parse(response);
     stations.forEach(function (station) {
+
 
         var icon = "";
         if (station.status === 'OPEN' && station.available_bikes > 0) {
@@ -38,11 +40,17 @@ get("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=a443018b15d69
                 } else {
                     $("#book").hide();
                 }
-                
+
                 booking.setInformations(station);
             }
         });
 
+        locations.push(marker);
+
         marker.addListener("click", marker.click);
     })
+
+    var markerCluster = new MarkerClusterer(map, locations, {
+        imagePath: '/public/images/m'
+    });
 })
