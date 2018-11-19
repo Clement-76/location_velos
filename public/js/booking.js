@@ -97,24 +97,31 @@ var booking = {
         $("#available_bike_stands").text(station.available_bike_stands);
     },
 
-    check: function (e, boolean, elt) {
+    check: function (boolean, elt) {
         if (boolean) {
-            e.preventDefault();
             $(elt).css("border", "1px solid #e74c3c");
         } else {
             $(elt).css("border", "1px solid #49e73c");
         }
     },
+    
+    clearBooking: function () {
+        $(".booking_form").hide("slow");
+        // borders reset
+        $("#canvas, #name, #first_name").css("border", "");
+    },
 
     book: function (e) {
+        e.preventDefault();
+        
         var emptyRegex = /^[\s]*$/;
         booking.name = $("#name").val();
         booking.firstName = $("#first_name").val();
 
         //checking if form elements are not empty
-        booking.check(e, canvas.isEmpty, $("#canvas"));
-        booking.check(e, emptyRegex.test(booking.name), $("#name"));
-        booking.check(e, emptyRegex.test(booking.firstName), $("#first_name"));
+        booking.check(canvas.isEmpty, $("#canvas"));
+        booking.check(emptyRegex.test(booking.name), $("#name"));
+        booking.check(emptyRegex.test(booking.firstName), $("#first_name"));
 
         if (canvas.isEmpty === false && emptyRegex.test(booking.name) === false && emptyRegex.test(booking.firstName) === false) {
             localStorage.setItem("name", booking.name);
@@ -123,10 +130,7 @@ var booking = {
             sessionStorage.setItem("reservedStation", booking.selectedStation.name);
             sessionStorage.setItem("time", Date.now());
             
-            //refresh
-            setTimeout(function () {
-                window.location.reload(false);
-            }, 10);
+            booking.clearBooking();
         }
     }
 }

@@ -3,7 +3,9 @@ var slideshow = {
         this.animate = false;
         this.actualSlide = 0;
         this.actualControl = "pause";
-        this.autoSlide = setInterval(this.nextSlide, 6000);
+        this.timeSlideshow = 5000;
+        // Plus 1000 for the transition
+        this.autoSlide = setInterval(this.nextSlide, this.timeSlideshow + 1000);
 
         $(".controls").on("click", slideshow.controls);
         $(document).on("keydown", slideshow.keydown);
@@ -83,7 +85,7 @@ var slideshow = {
     },
 
     play: function () {
-        slideshow.autoSlide = setInterval(this.nextSlide, 6000);
+        slideshow.autoSlide = setInterval(this.nextSlide, this.timeSlideshow + 1000);
         $(".controls i").replaceWith("<i class='fas fa-pause'></i>");
         slideshow.actualControl = "pause";
     }

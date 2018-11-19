@@ -609,7 +609,7 @@ footer a:hover:after {
     }
 }
 
-@media all and (min-width: 1500px) {
+@media all and (min-width: 1846px) {
     .center {
         max-width: 65vw;
     }
