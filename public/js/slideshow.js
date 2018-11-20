@@ -1,94 +1,92 @@
 var slideshow = {
-    init: function () {
+    init: function (timeSlideshow) {
         this.animate = false;
         this.actualSlide = 0;
         this.actualControl = "pause";
-        this.timeSlideshow = 5000;
         // Plus 1000 for the transition
-        this.autoSlide = setInterval(this.nextSlide, this.timeSlideshow + 1000);
+        this.timeSlideshow = timeSlideshow + 1000;
+        this.autoSlide = setInterval(this.nextSlide.bind(this), this.timeSlideshow);
 
-        $(".controls").on("click", slideshow.controls);
-        $(document).on("keydown", slideshow.keydown);
-        $(".arrow_left").on("click", slideshow.previousSlide);
-        $(".arrow_right").on("click", slideshow.nextSlide);
+        $(".controls").on("click", this.controls.bind(this));
+        $(document).on("keydown", this.keydown.bind(this));
+        $(".arrow_left").on("click", this.previousSlide.bind(this));
+        $(".arrow_right").on("click", this.nextSlide.bind(this));
     },
 
     nextSlide: function () {
         //if the slideshow is not animated
         //to not have multiple animations at the same time
-        if (slideshow.animate === false) {
-            slideshow.animate = true;
+        if (this.animate === false) {
+            this.animate = true;
 
-            slideshow.actualSlide++;
+            this.actualSlide++;
 
-            var leftPercentage = -slideshow.actualSlide * 100;
+            var leftPercentage = -this.actualSlide * 100;
 
             $(".image_container").animate({
                 left: leftPercentage + "%"
             }, 1000, function () {
                 //if the next image is the 5th we directly go to the 1st
                 //because the 5th image is just for the transition
-                if (slideshow.actualSlide + 1 === 5) {
+                if (this.actualSlide + 1 === 5) {
                     $(".image_container").css("left", "0");
-                    slideshow.actualSlide = 0;
+                    this.actualSlide = 0;
                 }
 
                 //end of the animation
-                slideshow.animate = false;
-            });
+                this.animate = false;
+            }.bind(this));
         }
     },
 
     previousSlide: function () {
-        if (slideshow.animate === false) {
-            slideshow.animate = true;
+        if (this.animate === false) {
+            this.animate = true;
 
             //if the current image is the first one, we go to the last one for the transition
-            if (slideshow.actualSlide === 0) {
+            if (this.actualSlide === 0) {
                 $(".image_container").css("left", "-400%");
-                slideshow.actualSlide = 4;
+                this.actualSlide = 4;
             }
 
-            slideshow.actualSlide--;
+            this.actualSlide--;
 
-            var leftPercentage = -slideshow.actualSlide * 100;
+            var leftPercentage = -this.actualSlide * 100;
 
             $(".image_container").animate({
                 left: leftPercentage + "%"
             }, 1000, function () {
                 //end of the animation
-                slideshow.animate = false;
-            });
+                this.animate = false;
+            }.bind(this));
         }
     },
     
     keydown: function (e) {
         if (e.keyCode === 37) {
-            slideshow.previousSlide();
+            this.previousSlide();
         } else if (e.keyCode === 39) {
-            slideshow.nextSlide();
+            this.nextSlide();
         }
     },
 
     controls: function () {
-        if (slideshow.actualControl === "pause") {
-            slideshow.pause();
+        if (this.actualControl === "pause") {
+            this.pause();
         } else {
-            slideshow.play();
+            this.play();
         }
     },
 
     pause: function () {
-        clearInterval(slideshow.autoSlide);
+        clearInterval(this.autoSlide);
         $(".controls i").replaceWith("<i class='fas fa-play'></i>");
-        slideshow.actualControl = "play";
+        this.actualControl = "play";
     },
 
     play: function () {
-        slideshow.autoSlide = setInterval(this.nextSlide, this.timeSlideshow + 1000);
+        this.autoSlide = setInterval(this.nextSlide.bind(this), this.timeSlideshow);
         $(".controls i").replaceWith("<i class='fas fa-pause'></i>");
-        slideshow.actualControl = "pause";
+        this.actualControl = "pause";
     }
 }
-
-slideshow.init();

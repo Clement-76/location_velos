@@ -1,17 +1,18 @@
 var booking = {
 
-    init: function () {
+    init: function (canvasObj) {
         this.actualStep = 1;
-        $(".booking_form form").on("submit", booking.book);
+        $(".booking_form form").on("submit", this.book.bind(this));
         this.autocompletion();
         this.showBooking();
+        this.canvas = canvasObj;
     },
 
     showBooking: function () {
         if (sessionStorage.getItem("time")) {
             $("#booking_state").show();
             $("#booking_state").html("Il y a une réservation : <br><b>Station</b> : " + sessionStorage.getItem("reservedStation") + "<br><b>Par</b> : " + localStorage.getItem("firstName") + " " + localStorage.getItem("name") + "<br><b>Temps restant</b> : <span id='remaining_time'></span>");
-            booking.remainingTime();
+            this.remainingTime();
         }
     },
 
@@ -58,20 +59,20 @@ var booking = {
         //because transition-duration = 0.5s in css
         $("#step_two").delay(500).hide(0);
         $("#step_one").delay(500).show(0);
-        booking.actualStep = 1;
+        this.actualStep = 1;
     },
 
     nextStep: function () {
         $("#step_one").hide(0);
         $("#step_two").show(0);
         $("#step_two").css("right", "0");
-        booking.actualStep = 2;
+        this.actualStep = 2;
     },
 
     setInformations: function (station) {
         $(".booking_form").show("slow", function () {
-            canvas.sizeOfCanvas();
-        });
+            this.canvas.sizeOfCanvas();
+        }.bind(this));
 
         if (this.actualStep === 2) {
             this.previousStep();
@@ -104,7 +105,7 @@ var booking = {
             $(elt).css("border", "1px solid #49e73c");
         }
     },
-    
+
     clearBooking: function () {
         $(".booking_form").hide("slow");
         // borders reset
@@ -113,26 +114,26 @@ var booking = {
 
     book: function (e) {
         e.preventDefault();
-        
+
         var emptyRegex = /^[\s]*$/;
-        booking.name = $("#name").val();
-        booking.firstName = $("#first_name").val();
+        this.name = $("#name").val();
+        this.firstName = $("#first_name").val();
 
         //checking if form elements are not empty
-        booking.check(canvas.isEmpty, $("#canvas"));
-        booking.check(emptyRegex.test(booking.name), $("#name"));
-        booking.check(emptyRegex.test(booking.firstName), $("#first_name"));
+        this.check(this.canvas.isEmpty, $("#canvas"));
+        this.check(emptyRegex.test(this.name), $("#name"));
+        this.check(emptyRegex.test(this.firstName), $("#first_name"));
 
-        if (canvas.isEmpty === false && emptyRegex.test(booking.name) === false && emptyRegex.test(booking.firstName) === false) {
-            localStorage.setItem("name", booking.name);
-            localStorage.setItem("firstName", booking.firstName);
+        if (this.canvas.isEmpty === false && emptyRegex.test(this.name) === false && emptyRegex.test(this.firstName) === false) {
+            localStorage.setItem("name", this.name);
+            localStorage.setItem("firstName", this.firstName);
 
-            sessionStorage.setItem("reservedStation", booking.selectedStation.name);
+            sessionStorage.setItem("reservedStation", this.selectedStation.name);
             sessionStorage.setItem("time", Date.now());
             
-            booking.clearBooking();
+            this.previousStep();
+            this.clearBooking();
+            this.showBooking();
         }
     }
 }
-
-booking.init();

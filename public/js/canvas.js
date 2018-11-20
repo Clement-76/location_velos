@@ -1,33 +1,33 @@
 var canvas = {
-    init: function () {
-        this.canvas = $("#canvas");
+    init: function (idCanvas, idResetBtn) {
+        this.canvas = $("#" + idCanvas);
         this.ctx = this.canvas[0].getContext("2d");
         this.posX;
         this.posY;
         this.isEmpty = true;
-        this.initCanvas();
-    },
-
-    initCanvas: function () {
-        $("#reset").on("click", this.clearCanvas);
-        $("#canvas").on("mousedown touchstart", this.mouseDown);
-        $("#canvas").on("mouseup touchend mouseleave", this.mouseUp);
-        $(window).on("resize", this.sizeOfCanvas);
+        this.drawBind = this.draw.bind(this);
+        
+        $("#" + idResetBtn).on("click", this.clearCanvas.bind(this));
+        this.canvas.on("mousedown touchstart", this.mouseDown.bind(this));
+        this.canvas.on("mouseup touchend mouseleave", this.mouseUp.bind(this));
+        $(window).on("resize", this.sizeOfCanvas.bind(this));
     },
 
     mouseUp: function () {
         //stop mousemove event
-        $("#canvas").off("mousemove touchmove", canvas.mouseMove);
+        this.canvas.off("mousemove touchmove", this.drawBind);
     },
 
     mouseDown: function (e) {
         e.preventDefault();
-        canvas.ctx.beginPath();
-        $("#canvas").on("mousemove touchmove", canvas.mouseMove);
+        this.ctx.beginPath();
+        this.drawBind(e);
+        this.isEmpty = false;
+        this.canvas.on("mousemove touchmove", this.drawBind);
     },
 
-    mouseMove: function (e) {
-        if (e.type === "touchmove") {
+    draw: function (e) {
+        if (e.type === "touchmove" || e.type === "touchstart") {
             this.posX = e.originalEvent.touches[0].pageX;
             this.posY = e.originalEvent.touches[0].pageY;
         } else {
@@ -35,37 +35,35 @@ var canvas = {
             this.posY = e.pageY;
         }
 
-        var offsetLeftCanvas = $("#canvas").offset().left;
-        var offsetTopCanvas = $("#canvas").offset().top;
+        var offsetLeftCanvas = this.canvas.offset().left;
+        var offsetTopCanvas = this.canvas.offset().top;
 
         var canvasX = this.posX - offsetLeftCanvas;
         var canvasY = this.posY - offsetTopCanvas;
 
-        canvas.ctx.lineTo(canvasX, canvasY);
-        canvas.ctx.stroke();
+        this.ctx.lineTo(canvasX, canvasY);
+        this.ctx.stroke();
         
-        canvas.isEmpty = false;
+        this.isEmpty = false;
     },
 
     clearCanvas: function () {
-        canvas.ctx.clearRect(0, 0, $("#canvas").width(), $("#canvas").height());
-        canvas.isEmpty = true;
+        this.ctx.clearRect(0, 0, this.canvas.width(), this.canvas.height());
+        this.isEmpty = true;
     },
 
     sizeOfCanvas: function () {
         //because resize canvas clears it
-        canvas.isEmpty = true;
+        this.isEmpty = true;
         
-        canvas.formWidth = $(".booking_form").width();
+        this.formWidth = $(".booking_form").width();
 
         //the - 2 is for canvas borders
-        $("#canvas")[0].width = canvas.formWidth - 2;
+        this.canvas[0].width = this.formWidth - 2;
 
         //line styles
-        canvas.ctx.lineJoin = 'round';
-        canvas.ctx.lineCap = 'round';
-        canvas.ctx.lineWidth = 3;
+        this.ctx.lineJoin = 'round';
+        this.ctx.lineCap = 'round';
+        this.ctx.lineWidth = 3;
     }
 }
-
-canvas.init();
