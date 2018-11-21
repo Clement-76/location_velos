@@ -49,8 +49,8 @@ var booking = {
     autocompletion: function () {
         //if name and firstName are registered in localStorage
         if (localStorage.getItem("name") && localStorage.getItem("firstName")) {
-            document.getElementById("name").value = localStorage.getItem("name");
-            document.getElementById("first_name").value = localStorage.getItem("firstName");
+            $("#name").val(localStorage.getItem("name"));
+            $("#first_name").val(localStorage.getItem("firstName"));
         }
     },
 
