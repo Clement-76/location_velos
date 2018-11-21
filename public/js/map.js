@@ -62,6 +62,13 @@ var map = {
                 }
 
                 this.bookingObj.setInformations(station);
+                
+                // if the form is below the map
+                if ($(window).width() <= 966) {
+                    $("html, body").animate({
+                        scrollTop: $(".booking_form").offset().top + $("body").scrollTop()
+                    }, 500);
+                }
             }
         });
 
