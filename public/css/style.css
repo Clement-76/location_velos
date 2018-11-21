@@ -477,6 +477,26 @@ footer a:hover:after {
 
 /* tablets and smartphones */
 @media all and (max-width: 768px) {
+    body {
+        background: url('/public/images/bicycle-background-tablet.jpg') center / cover no-repeat fixed;
+    }
+    
+    .image_slider:nth-child(1),
+    .image_slider:nth-child(5) {
+        background-image: url('/public/images/bicycle-1-tablet.jpg');
+    }
+
+    .image_slider:nth-child(2) {
+        background-image: url('/public/images/bicycle-2-tablet.jpg');
+    }
+
+    .image_slider:nth-child(3) {
+        background-image: url('/public/images/bicycle-3-tablet.jpg');
+    }
+
+    .image_slider:nth-child(4) {
+        background-image: url('/public/images/bicycle-4-tablet.jpg');
+    }
 
     .container,
     footer {
@@ -494,7 +514,7 @@ footer a:hover:after {
     .image_slider p {
         font-size: 1.2em;
     }
-    
+
     .image_slider img {
         height: calc(100% - 33px);
     }
@@ -533,18 +553,38 @@ footer a:hover:after {
 
 /* smartphones */
 @media all and (max-width: 425px) {
+    body {
+        background: url('/public/images/bicycle-background-mobile.jpg') center / cover no-repeat fixed;
+    }
+    
+    .image_slider:nth-child(1),
+    .image_slider:nth-child(5) {
+        background-image: url('/public/images/bicycle-1-mobile.jpg');
+    }
 
+    .image_slider:nth-child(2) {
+        background-image: url('/public/images/bicycle-2-mobile.jpg');
+    }
+
+    .image_slider:nth-child(3) {
+        background-image: url('/public/images/bicycle-3-mobile.jpg');
+    }
+
+    .image_slider:nth-child(4) {
+        background-image: url('/public/images/bicycle-4-mobile.jpg');
+    }
+    
     .container,
     footer,
     .booking_form {
         padding: 20px;
     }
-    
+
     header .center {
         justify-content: center;
-        
+
     }
-    
+
     a.btn {
         text-transform: uppercase;
         display: block;
@@ -595,7 +635,7 @@ footer a:hover:after {
         font-size: 0.85em;
         padding: 5px;
     }
-    
+
     .image_slider img {
         height: calc(100% - 26px);
     }
